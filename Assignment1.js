@@ -21,7 +21,7 @@ var text;
             return "Spades";
         } else if (inputNumber >= (cardsInSuit*2+1) && inputNumber < (cardsInSuit*3+1)) {
             return "Diamonds";
-        } else if (inputNumber >= (cardsInSuit*3+1) && inputNumber <= maxinput) {
+        } else if (inputNumber >= (cardsInSuit*3+1) && inputNumber <= cardsInTotal) {
             return "Clubs";
         } else
             return "ErrorSuit";
@@ -34,7 +34,7 @@ var text;
             return inputNumber - cardsInSuit;
         } else if (inputNumber >= (cardsInSuit*2+1) && inputNumber < (cardsInSuit*3+1)) {
             return inputNumber - (cardsInSuit*2);
-        } else if (inputNumber >= (cardsInSuit*3+1) && inputNumber <= maxinput) {
+        } else if (inputNumber >= (cardsInSuit*3+1) && inputNumber <= cardsInTotal) {
             return inputNumber - (cardsInSuit*3);
         } else
             return 0;
@@ -52,7 +52,7 @@ var text;
         } else if (value == 13) {
             return "King of " + suit;
         } else
-            return "ErrorPrint value is: " + value;
+            return "Type a number between 1 and 52 and try again.";
     }
 
         
