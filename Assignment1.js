@@ -11,7 +11,26 @@ var text;
         var inputNumber = document.getElementById("cardNumber").value;
         suit = getSuit(inputNumber);
         value = getValue(inputNumber);
-        text = printCard(value);
+        
+        switch (value){
+
+            case 1:
+                text = "The card is: Ace of " + suit;
+                break;
+            case 2, 3, 4, 5, 6, 7, 8, 9, 10:
+                text = value + " of " + suit;
+                break;
+            case 11:
+                text = "Knight of " + suit;
+                break;
+            case 12:
+                text = "Queen of " + suit;
+                break;
+            case 13:
+                text = "King of " + suit;
+                break;
+        }
+
         document.getElementById("cardNameText").innerHTML = "The card is the: " + text;
     }
 
@@ -42,17 +61,5 @@ var text;
             return 0;
     }
 
-    function printCard(value) {
-        if (value > 1 && value < 11) {
-            return value + " of " + suit;
-        } else if (value === 1) {
-            return "The card is: Ace of " + suit;
-        } else if (value === 11) {
-            return "The card is: Knight of " + suit;
-        } else if (value === 12) {
-            return "The card is: Queen of " + suit;
-        } else if (value === 13) {
-            return "The card is: King of " + suit;
-        } else
-            return "ErrorPrint: {0}".format(value);
-    }
+        
+
