@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Assignment1</title>
     <link href="css/default.css" rel="stylesheet" />
+    <script type="text/javascript" src="assignment1.js"></script>
     </head>
 <body>
     <div><p>Enter a number from 1 to 52 and press "Submit" to submit the form:</p></div>
@@ -12,61 +13,6 @@
     
     <button onclick="cardName()">Try it</button>
         
-    <p id="cardNameText">value: </p>
+    <p id="cardNameText"></p>
 
 
-<script>
-    function cardName() {
-        var inputNumber = document.getElementById("cardNumber").value;
-        var suit = getSuit(inputNumber);
-        var value = getValue(inputNumber);
-        var text = printCard(value);
-        document.getElementById("cardNameText").innerHTML = "value:" + text;
-    }
-    var minHearts = 1;
-    var minSpades = 14;
-    var minDiamonds = 27;
-    var minClubs = 40;
-    var maxinput = 52
-    function getSuit(inputNumber) {
-        if (inputNumber >= minHearts && inputNumber < minSpades) {
-            return "Hearts";
-        } else if (inputNumber >= minSpades && inputNumber < minDiamonds) {
-            return "Spades";
-        } else if (inputNumber >= minDiamonds && inputNumber < minClubs) {
-            return "Diamonds";
-        } else if (inputNumber >= minClubs && inputNumber <= maxinput) {
-            return "Clubs";
-        } else
-            return "ErrorSuit";
-    }
-    function getValue(inputNumber) {
-        if (inputNumber > 0 && inputNumber < 14) {
-            return inputNumber;
-        } else if (inputNumber >= 14 && inputNumber < 27) {
-            return inputNumber - 13;
-        } else if (inputNumber >= 27 && inputNumber < 40) {
-            return inputNumber - 26;
-        } else if (inputNumber >= 40 && inputNumber < 53) {
-            return inputNumber - 39;
-        } else
-            return 0;
-    }
-    function printCard(value) {
-        if (value > 1 && value < 11) {
-            return "The card is: " + suit + value;
-        } else if (value === 1) {
-            return "The card is: Ace of " + suit;
-        } else if (value === 11) {
-            return "The card is: Knight of " + suit;
-        } else if (value === 12) {
-            return "The card is: Queen of " + suit;
-        } else if (value === 13) {
-            return "The card is: King of " + suit;
-        } else
-            return "ErrorPrint: {0}";
-    }
-</script>     
-    
-</body>
-</html>
