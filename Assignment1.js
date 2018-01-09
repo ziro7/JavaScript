@@ -1,64 +1,58 @@
-var minHearts = 1;
-var minSpades = 14;
-var minDiamonds = 27;
-var minClubs = 40;
-var maxinput = 52
+var cardsInTotal = 52;
+var numberOfSuits = 4;
+var cardsInSuit = cardsInTotal / numberOfSuits;
 var suit;
 var value;
 var text;
 
     function cardName() {
-        var inputNumber = document.getElementById("cardNumber").value;
-        suit = getSuit(inputNumber);
-        value = getValue(inputNumber);
-        
-        switch (value){
-
-            case 1:
-                text = "The card is: Ace of " + suit;
-                break;
-            case 2, 3, 4, 5, 6, 7, 8, 9, 10:
-                text = value + " of " + suit;
-                break;
-            case 11:
-                text = "Knight of " + suit;
-                break;
-            case 12:
-                text = "Queen of " + suit;
-                break;
-            case 13:
-                text = "King of " + suit;
-                break;
-        }
-
-        document.getElementById("cardNameText").innerHTML = "The card is the: " + text;
+       var inputNumber = document.getElementById("cardNumber").value;
+       suit = getSuit(inputNumber);
+       value = getValue(inputNumber);
+       text = printCard(value);
+       document.getElementById("cardNameText").innerHTML = "The card is the: " + text;
     }
 
 
     function getSuit(inputNumber) {
-        if (inputNumber >= minHearts && inputNumber < minSpades) {
+        if (inputNumber >= 1 && inputNumber < (cardsInSuit+1)) {
             return "Hearts";
-        } else if (inputNumber >= minSpades && inputNumber < minDiamonds) {
+        } else if (inputNumber >= (cardsInSuit+1) && inputNumber < (cardsInSuit*2+1)) {
             return "Spades";
-        } else if (inputNumber >= minDiamonds && inputNumber < minClubs) {
+        } else if (inputNumber >= (cardsInSuit*2+1) && inputNumber < (cardsInSuit*3+1)) {
             return "Diamonds";
-        } else if (inputNumber >= minClubs && inputNumber <= maxinput) {
+        } else if (inputNumber >= (cardsInSuit*3+1) && inputNumber <= maxinput) {
             return "Clubs";
         } else
             return "ErrorSuit";
     }
 
     function getValue(inputNumber) {
-        if (inputNumber > 0 && inputNumber < 14) {
+        if (inputNumber > 0 && inputNumber < (cardsInSuit+1)) {
             return inputNumber;
-        } else if (inputNumber >= 14 && inputNumber < 27) {
-            return inputNumber - 13;
-        } else if (inputNumber >= 27 && inputNumber < 40) {
-            return inputNumber - 26;
-        } else if (inputNumber >= 40 && inputNumber < 53) {
-            return inputNumber - 39;
+        } else if (inputNumber >= (cardsInSuit+1) && inputNumber < (cardsInSuit*2+1)) {
+            return inputNumber - cardsInSuit;
+        } else if (inputNumber >= (cardsInSuit*2+1) && inputNumber < (cardsInSuit*3+1)) {
+            return inputNumber - (cardsInSuit*2);
+        } else if (inputNumber >= (cardsInSuit*3+1) && inputNumber <= maxinput) {
+            return inputNumber - (cardsInSuit*3);
         } else
             return 0;
+    }
+
+    function printCard(value) {
+        if (value == 1) {
+            return "Ace of " + suit;
+        } else if (value > 1 && value < 11) {
+            return value + " of " + suit;
+        } else if (value == 11) {
+            return "Knight of " + suit;
+        } else if (value == 12) {
+            return "Queen of " + suit;
+        } else if (value == 13) {
+            return "King of " + suit;
+        } else
+            return "ErrorPrint value is: " + value;
     }
 
         
