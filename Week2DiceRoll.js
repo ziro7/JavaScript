@@ -1,10 +1,23 @@
 
 var randomNumber;
-DiceRoll();
+var i = 0;
 
-function DiceRoll(){
+do {
     randomNumber = Math.floor((Math.random() * 6)+1);
-    
-}
+    console.log(randomNumber);
+    i++;    
+} while (randomNumber != 6);
 
-console.log(randomNumber);
+
+
+
+
+/* for (i = 0; i<1000; i++) {
+    randomNumber = Math.floor((Math.random() * 6)+1);
+    console.log(typeof randomNumber);
+    console.log(randomNumber);
+    if (randomNumber == 6){
+        break
+    }
+}
+ */
