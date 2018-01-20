@@ -92,13 +92,6 @@ function giveMeARecommendation () {
         }
     } 
 
-    document.getElementById("panel").innerHTML=recommendation;
+    document.getElementById("panel").innerHTML="The recommendation is: "+ recommendation;
     console.log(recommendation);
 }
-
-function init (){
-    var knap=document.getElementById("knap");
-    knap.onclick=giveMeARecommendation();
-}
-
-document.addEventListener("DOMContentLoaded", init, false);
