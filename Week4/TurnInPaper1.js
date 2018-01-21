@@ -13,7 +13,7 @@ Hvis aktien er faldet mere end 10% i løbet af de 5 dage, skal den sælges
 */
 
 function giveMeARecommendation () {
-    var recommendation = "Hold";
+    var recommendation = [];
     var a = document.getElementById("number1").value;
     var b = document.getElementById("number2").value;
     var c = document.getElementById("number3").value;
@@ -51,47 +51,52 @@ function giveMeARecommendation () {
     //Hvis en akties udsving over de 5 dage er mindre end 2% skal den holdes.
     var volatile = Math.abs((e-a)/a);
     if (volatile < 0.02) {
-        recommendation = "Hold";
+        recommendation.push("Hold");
     } 
 
+    //Hvis aktien er steget mere end 20% i løbet af de 5 dage, skal den holdes
     var isIncreasedByMoreThan20 =  ((e-a)/a) > 0.20;
     if (isIncreasedByMoreThan20){
-        recommendation = "Hold";
+        recommendation.push("Hold");
     }
 
+    //Hvis aktien er faldet mere end 10% i løbet af de 5 dage, skal den sælges
     var isDecreasedBy10OrMore =  ((e-a)/a) < -0.10;
     if (isDecreasedBy10OrMore){
-        recommendation = "Sell";
+        recommendation.push("Sell");
     }
-
-
-    //Hvis aktien er steget mere end 20% i løbet af de 5 dage, skal den holdes
-    //Hvis aktien er faldet mere end 10% i løbet af de 5 dage, skal den sælges
-
 
     if (increasedFrom1to2 == true && increasedFrom2to3 == true){
         if (increasedFrom3to4 == true){
             if (increasedFrom4to5 == true){
-                recommendation = "buy" //Stigning alle dage
+                recommendation.push("Buy"); //Stigning alle dage
             } else {
-                recommendation = "sell" //stig->stigning->stigning->fald = sælg.
+                recommendation.push("Sell"); //stig->stigning->stigning->fald = sælg.
             }
         } else if (increasedFrom4to5 == false){
-            recommendation = "sell" //stig->stigning->fald->fald = sælg.
+            recommendation.push("Sell"); //stig->stigning->fald->fald = sælg.
         } 
     }
 
     if (increasedFrom1to2 == false && increasedFrom2to3 == false){
         if (increasedFrom3to4 == false) {
             if(increasedFrom4to5 == false){
-                recommendation = "sell" //fald alle dage.
+                recommendation.push("Sell"); //fald alle dage.
             } 
 
         } else if (increasedFrom4to5 == true){
-            recommendation = "buy" //fald->fald->stig ->stigning =>køb
+            recommendation.push("Buy"); //fald->fald->stig ->stigning =>køb
         }
     } 
-
-    document.getElementById("panel").innerHTML="The recommendation is: "+ recommendation;
-    console.log(recommendation);
+ 
+    if (recommendation.length > 1) {
+        document.getElementById("panel").innerHTML="The recommendation is not conclusive. Could be either "+ recommendation[0] + " or " + recommendation[1];    
+    } else if (recommendation.length == 1) {
+        document.getElementById("panel").innerHTML="The recommendation is: "+ recommendation[0];
+    } else {
+        document.getElementById("panel").innerHTML="No recommendation can be made at present";
+    }
+        for(i=0; i<recommendation.length;i++){
+        console.log(recommendation[i]);
+    }
 }
