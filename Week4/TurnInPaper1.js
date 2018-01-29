@@ -21,6 +21,7 @@ function giveMeARecommendation () {
     var c = parseInt(document.getElementById("number3").value)
     var d = parseInt(document.getElementById("number4").value)
     var e = parseInt(document.getElementById("number5").value)
+    
     var prices = [a, b, c, d ,e ]; //array med de egentligs kurser
 
     for (i=1; i<prices.length;i++){
