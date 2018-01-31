@@ -50,7 +50,10 @@ function giveMeARecommendation () {
     }
 
     //Hvis en akties udsving over de 5 dage er mindre end 2% skal den holdes.
-    if (Math.abs((e-a)/a) < 0.02) {
+    var maxVærdi = Math.max.apply(Math, prices);
+    var minVærdi = Math.min.apply(Math, prices);
+
+    if (Math.abs((maxVærdi-minVærdi)/minVærdi) < 0.02) {
         recommendation.push("Hold");
     } 
 
