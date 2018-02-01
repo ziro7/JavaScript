@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <script type="text/javascript" src="index.js"></script>
+   </head>
+   <body>
+      <p>Skriv din bandwitch</p>
+      <p>Bandwitch range er 480, 720,1020</p>
+      <input id="kvalitet" type="text"/><br>
+      <p>Skriv hvor mange kunder du har</p>
+      <input id="kunder" type="text"/><br>
+      <p>Hvor mange timer om dagen</p>
+      <input id="time" type="text"/><br>
+      <p>Hvor meget betaler du per GB </p>
+      <input id="betaling" type="text"/><br>
+      <br>
+      <hr>
+      <p>Skriv din indtægt</p>
+      <input id="indtægtinput" type="text"/><br>
+      <p>Hvor meget har du i omkostninger</p>
+      <input id="omkostningerinput" type="text"/><br>
+      <button onclick="beregn()">Beregn</button>
+      <input onclick="ad()" type="button" value="luk tap detailer" id="åbne"></button>
+      <br>
+      <p id="error"></p>
+      <div id="advance">
+         <table border="1">
+            <tr>
+               <th>Per Sekund med en seer</th>
+               <th>Per minute med en seer </th>
+               <th>Per time med en seer </th>
+               <th>Konveret til GB </th>
+               <th>Antal timer om dagen </th>
+               <th>Seer der ser med </th>
+            </tr>
+            <tr>
+               <td>
+                  <p id="Sekundtext">
+               </td>
+               <td>
+                  <p id="minutetext"></p>
+               </td>
+               <td>
+                  <p id="hourlytext"></p>
+               </td>
+               <td>
+                  <p id="conventer"></p>
+               </td>
+               <td>
+                  <p id="kundertext"></p>
+               </td>
+               <td>
+                  <p id="timetext"></p>
+               </td>
+            </tr>
+            <tr>
+               <th>Pris per sekunt</th>
+               <th>Pris per minute</th>
+               <th>Pris per time </th>
+            </tr>
+            <tr>
+               <td>
+                  <p id="ppstext">
+               </td>
+               <td>
+                  <p id="ppmtext"></p>
+               </td>
+               <td>
+                  <p id="ppttext"></p>
+               </td>
+            <tr>
+               <th>Indtægt</th>
+               <th>Omkostinger</th>
+               <th>Total </th>
+               <th>Total pris du skal betale for at streame</th>
+            </tr>
+            <tr>
+               <td>
+                  <p id="indtægtfield">
+               </td>
+               <td>
+                  <p id="omkostningerfield"></p>
+               </td>
+               <td>
+                  <p id="resultat"></p>
+               </td>
+               <td>
+                  <p id="totaltpris"></p>
+               </td>
+            </tr>
+            </tr>
+         </table>
+         <p id="error"></p>
+      </div>
+      <hr>
+      <p id="rawtext"></p>
+   </body>
+</html>

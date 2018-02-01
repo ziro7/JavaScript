@@ -37,7 +37,7 @@ function giveMeARecommendation () {
     increaseAllDays = [1,1,1,1]; //Stigning alle dage
     decreaseAllDays = [-1,-1,-1,-1]; //fald alle dage.
     clibm3AndThenDrop = [1,1,1,-1]; //stig->stigning->stigning->fald = sælg.
-    clibm2AndThenDrop = [1,1,-1,-1]; //stig->stigning->stigning->fald = sælg.
+    clibm2AndThenDrop = [1,1,-1,-1]; //stig->stigning->fald->fald = sælg.
     dropAndThenClimb = [-1,-1,1,1]; //fald->fald->stig ->stigning =>køb
  
     matrix =        [increaseAllDays, decreaseAllDays, clibm3AndThenDrop, clibm2AndThenDrop, dropAndThenClimb]
