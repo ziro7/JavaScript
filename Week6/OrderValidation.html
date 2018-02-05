@@ -10,10 +10,11 @@
 
     <h1>Indtast følgende for at ligge en ordre</h1>
 
-    <input type="name" id="1" >Navn</input><br>
-    <input type="adress" id="2" >Adresse</input><br>
-    <input type="item" id="3" >Item</input><br>
-    <input type="quantity" id="4" >Quantity</input><br>
+    <input type="text" size="20" id="1" >Name</input><br>
+    <input type="text" size="20" id="2" >Adress</input><br>
+    <input type="text" size="4" required pattern ="\d{4}" id="5" >Postcode</input><br>
+    <input type="text" size="20" id="3" >Item</input><br>
+    <input type="number" size="2" id="4" >Quantity</input><br>
     
     <button onclick="giveAnOrder()">Bestil</button>
 

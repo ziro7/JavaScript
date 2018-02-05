@@ -5,18 +5,24 @@ function giveAnOrder(){
     
     var name = document.getElementById("1").value;
     var adress = document.getElementById("2").value;
+    var postCode = document.getElementById("5").value;
     var item = document.getElementById("3").value;
     var quantity = parseInt(document.getElementById("4").value);
     var date = new Date();
     var formIsOkay = false;
-
+    
     function validateForm (){
+
         if (name ==""){
             alert("Name must be filled out");
             return false;
         }
         if (adress ==""){
             alert("Adress must be filled out");
+            return false;
+        }
+        if(postCode == ""){
+            alert("Item must be filled");
             return false;
         }
         if (item ==""){
@@ -30,16 +36,18 @@ function giveAnOrder(){
         if (isNaN(quantity)){
             alert("Quantity have to a number");
             return false;
+        //tilføj flere validering - postnummer har rigtigt format mv.
         }
         formIsOkay = true;
         console.log(typeof(quantity));
     }
 
-    var Order = function (name, adress, item, quantity){
+    var Order = function (name, adress, postCode, item, quantity){
         this.id = globalId;
         globalId++;
         this.name = name;
         this.adress = adress;
+        this.postCode = postCode;
         this.dateOfOrder = date.toDateString;
         this.item = item;
         this.quantity = quantity;
