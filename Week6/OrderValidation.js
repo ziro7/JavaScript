@@ -5,6 +5,7 @@ function giveAnOrder(){
     
     var name = document.getElementById("1").value;
     var adress = document.getElementById("2").value;
+    var postCodeCheck = /^(\d{4})$/;
     var postCode = document.getElementById("5").value;
     var item = document.getElementById("3").value;
     var quantity = parseInt(document.getElementById("4").value);
@@ -21,10 +22,11 @@ function giveAnOrder(){
             alert("Adress must be filled out");
             return false;
         }
-        if(postCode == ""){
-            alert("Item must be filled");
-            return false;
-        }
+        if (!postCodeCheck.test(postCode)||postCode=="") 
+        { 
+        alert("Ikke korrekt postkode eller den mangler udfyldelse."); 
+        return false; 
+        } 
         if (item ==""){
             alert("item must be filled out");
             return false;
@@ -39,7 +41,7 @@ function giveAnOrder(){
         //tilføj flere validering - postnummer har rigtigt format mv.
         }
         formIsOkay = true;
-        console.log(typeof(quantity));
+        //console.log(typeof(quantity));
     }
 
     var Order = function (name, adress, postCode, item, quantity){
@@ -48,7 +50,7 @@ function giveAnOrder(){
         this.name = name;
         this.adress = adress;
         this.postCode = postCode;
-        this.dateOfOrder = date.toDateString;
+        this.dateOfOrder = date.toDateString();
         this.item = item;
         this.quantity = quantity;
             
@@ -58,13 +60,13 @@ function giveAnOrder(){
             document.getElementById("panel3").innerHTML="\n the order was placed on: " + this.dateOfOrder;
             document.getElementById("panel4").innerHTML="\t and holds " + this.quantity +" of " + this.item;
         }
-    };
+    }
     
     validateForm();
     if (formIsOkay){
-        var newOrder = new Order(name, adress, item, quantity);
+        var newOrder = new Order(name, adress, postCode, item, quantity);
         newOrder.displayOrder();
-        console.log(globalId);
+        //console.log(globalId);
     } else {
         document.getElementById("panel1").innerHTML="The order was not valid";
     }
