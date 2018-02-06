@@ -70,22 +70,15 @@ function modsatSorteret(terninger) {
 
 //et par //må ikke få et indput fra spilleren
 function etPar(terninger) {
-    var parIHvad = 0;
+    var result = 0;
     var sorteretTerninger = modsatSorteret(terninger);
 
     //finder det højeste par da den starter med den reverse sorteret array
     for(i=0;i<sorteretTerninger.length;i++){
         if (sorteretTerninger[i]==sorteretTerninger[i+1]){
-            parIHvad=sorteretTerninger[i];
+            result=sorteretTerninger[i]*2;
             break;//hopper ud ved første match så den ikke overskrives med mindre par.
         }
-    }
-    
-    var filteredArray = arrayMedVærdi(terninger,parIHvad);
-    var result = 0;
-
-    if (filteredArray.length>1){
-        var result = filteredArray[0] + filteredArray[1]; //hvis der er 3 ens vil den kun tage værdi af de først 2.
     }
     return result;
 }
@@ -103,7 +96,7 @@ function toPar (terninger, parEt, parTo) {
             break;
         };
     }
-    //starter på index 2 da det er det tidligste sted par to kan starte
+    //starter på index 2 da det er det tidligste sted par to kan starte og hvis der er to skal første par senest slutte ved index 2
     for(i=2;i<sorteretTerninger.length;i++){
         if (sorteretTerninger[i]==sorteretTerninger[i+1]){
             parTo=sorteretTerninger[i];
@@ -225,4 +218,5 @@ function test (functionCall){
     console.log(functionCall([5,5,4,4,5]));
     console.log(functionCall([2,3,4,5,6]));
 }
+test(etPar);
 test(fuldtHus);
