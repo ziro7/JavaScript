@@ -10,35 +10,12 @@ function topSection(terninger,counter ) {
     return point;
 }
 
-function ettere(terninger){
-    let point = topSection(terninger,1);
-    return point;
-}
-
-function toere(terninger){
-    let point = topSection(terninger,2);
-    return point;
-}
-
-function trere(terninger){
-    let point = topSection(terninger,3);
-    return point;
-}
-
-function firere(terninger){
-    let point = topSection(terninger,4);
-    return point;
-}
-
-function femere(terninger){
-    let point = topSection(terninger,5);
-    return point;
-}
-
-function seksere(terninger){
-    let point = topSection(terninger,6);
-    return point;
-}
+function ettere(terninger) {return topSection(terninger,1);}
+function toere(terninger)  {return topSection(terninger,2);}
+function trere(terninger)  {return topSection(terninger,3);}
+function firere(terninger) {return topSection(terninger,4);}
+function femere(terninger) {return topSection(terninger,5);}
+function seksere(terninger){return topSection(terninger,6);}
 
 //Hjælpe funktion som filtre array til at består af den der kun har "værdi"
 function arrayMedVærdi(terninger, værdi){
@@ -68,7 +45,7 @@ function modsatSorteret(terninger) {
     return modsatSorteret;
 }
 
-//et par //må ikke få et indput fra spilleren
+//et par 
 function etPar(terninger) {
     var result = 0;
     var sorteretTerninger = modsatSorteret(terninger);
@@ -86,22 +63,26 @@ function etPar(terninger) {
 //to par
 function toPar (terninger, parEt, parTo) {
 
-    var parEt;
-    var parTo;
+    var parEt = 0;
+    var parTo = 0;
     var sorteretTerninger = modsatSorteret(terninger);
     //finder højest par først
-    for(i=0;i<sorteretTerninger.length;i++){
+    for(i=0;i<3;i++){
         if (sorteretTerninger[i]==sorteretTerninger[i+1]){
             parEt=sorteretTerninger[i];
             break;
-        };
+        }
     }
     //starter på index 2 da det er det tidligste sted par to kan starte og hvis der er to skal første par senest slutte ved index 2
+    //tjekker så om paret er lig med par 1 - hvis det er tjekker jeg om der er 4 ens 
     for(i=2;i<sorteretTerninger.length;i++){
         if (sorteretTerninger[i]==sorteretTerninger[i+1]){
-            parTo=sorteretTerninger[i];
-            break;
-        };
+            if (sorteretTerninger[i]==parEt && (sorteretTerninger[0]==sorteretTerninger[3] || sorteretTerninger[1]==sorteretTerninger[4])){
+                parTo=parEt;
+            } else if (sorteretTerninger[i]!=parEt){
+                parTo=sorteretTerninger[i];
+            }
+        }
     }
     
     var ArrayOne = arrayMedVærdi(terninger,parEt);
@@ -192,6 +173,7 @@ function fuldtHus (terninger) {
     if (ArrayOne.length>1 && ArrayTwo.length>2 ){
         var result = ArrayOne[0] + ArrayOne[1] + ArrayTwo[0] + ArrayTwo[1] + ArrayTwo[2];
     }
+
     return result;
 }
 
@@ -205,18 +187,29 @@ function chancen(terninger){
 function yatzy(terninger) {
     var sorteretTerninger = modsatSorteret(terninger);
     if (sorteretTerninger[0] == sorteretTerninger[4]){
-        return 50;
-    } else{
+        return sum(terninger)+50;
+    } else {
         return 0;
     }
 }
 
 function test (functionCall){
-    console.log(functionCall([1,2,3,4,5]));
-    console.log(functionCall([3,1,1,1,3]));
-    console.log(functionCall([3,3,3,3,3]));
-    console.log(functionCall([5,5,4,4,5]));
-    console.log(functionCall([2,3,4,5,6]));
+    console.log(functionCall([1,2,3,5,5])); //et pa
+    console.log(functionCall([1,2,3,4,5])); //lav
+    console.log(functionCall([3,1,2,1,3])); //to par
+    console.log(functionCall([1,2,2,2,3])); //test på 2 par - tre ens
+    console.log(functionCall([3,3,3,3,3])); //fuldt hus, 4 ens mv.
+    console.log(functionCall([5,5,4,4,5])); //fuld hus
+    console.log(functionCall([2,3,4,5,6])); //høj
+    console.log(functionCall([6,6,6,6,6])); //yatzy
 }
-test(etPar);
-test(fuldtHus);
+
+//test(etPar);
+//test(toPar);
+//test(treEns);
+//test(fireEns);
+//test(lav);
+//test(høj);
+//test(fuldtHus);
+//test(chancen);
+//test(yatzy);
