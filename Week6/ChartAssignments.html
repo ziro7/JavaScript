@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Index - JS Chart</title>
+    <link href="../css/default.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+</head>
+<body>
+
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
+                datasets: [{
+                    label: ['Gennemsnitstemperatur'], 
+                    data: [-4.1, -4.3, -0.8, 4.2, 10, 15.3, 16.7, 15.7, 11.5, 7, 1.7, -1.7],
+                    fill: false,
+                    backgroundColor: "yellow",
+                    borderColor:"Green",
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+        <canvas id="myChart2" width="400" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById("myChart2").getContext('2d');
+            var myChart2 = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
+                    datasets: [{
+                        label: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"], 
+                        data: [39, 27, 27, 31, 32, 46, 70, 69, 57, 51, 53, 46],
+                        backgroundColor: ["yellow", "Green", "Orange", "Red", "Blue", "Purple", "Pink", "Black", "White", "Grey", "rgba(255, 99, 132, 0.2)", 'rgba(255, 125, 0, 0.2)'],
+                        borderColor:"Black",
+                        borderWidth: 5
+                    }]
+                },
+            });
+    </script>
+        <canvas id="myChart3" width="400" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById("myChart3").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
+                    datasets: [{
+                        label: ['Lavest temperatur'], 
+                        data: [-6.5, -7, -3.9, 0.2, 4.9, 10.3, 12.2, 11.6, 8.2, 4.4, -0.3, -4.1],
+                        fill: false,
+                        backgroundColor: "yellow",
+                        borderColor:"Orange",
+                        borderWidth: 2
+                    },{
+                        label: ['Højeste temperatur'], 
+                        data: [-1.6, -1.5, 2.4, 8.3, 15.2, 20.3, 21.2, 19.8, 14.9, 9.6, 3.8, 0.7],
+                        fill: false,
+                        backgroundColor: "yellow",
+                        borderColor:"Green",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+    </script>
+        </script>
+        <canvas id="myChart4" width="400" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById("myChart4").getContext('2d');
+            var comboChart = new Chart(ctx, {
+                type:"bar",
+                data: {
+                    labels: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
+                    datasets: [{
+                        type:"line",
+                        label: ['Gennemsnitstemperatur'], 
+                        data: [-4.1, -4.3, -0.8, 4.2, 10, 15.3, 16.7, 15.7, 11.5, 7, 1.7, -1.7],
+                        fill: false,
+                        borderColor:"Orange",
+                        borderWidth: 2
+                    },{
+                        type:"bar",
+                        label: ['Nedbør'], 
+                        data: [39, 27, 27, 31, 32, 46, 70, 69, 57, 51, 53, 46],
+                        fill: false,
+                        borderColor:"Green",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title:{
+                        display: true,
+                        text:"Chart - opgave 4"
+                    },
+                    tooltip:{
+                        mode: "index",
+                        intersect: true,
+                    }
+                }
+            });
+    </script>
+</body>
